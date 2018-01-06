@@ -62,6 +62,10 @@ class Map extends Component {
         }
     }
 
+    navigateToRate() {
+        this.props.navigation.navigate('Example');
+    }
+
     render() {
         return (
             <MapView 
@@ -70,13 +74,13 @@ class Map extends Component {
                 region={this.state.region}
                 onRegionChangeComplete={this.onRegionChange.bind(this)}
                 onPress={this.onMapPress.bind(this)}
-                showsMyLocationButton={true}
             >
                 {this.state.markers.map((marker, i) =>
                     <Marker
                         key={i}
                         latitude={marker.latitude}
                         longitude={marker.longitude}
+                        onNavigation={() => this.navigateToRate()}
                     />
                 )}
             </MapView>

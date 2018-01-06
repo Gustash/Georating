@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-import Map from './components/ui/Map';
+import Stack from './navigation';
 
-export default class App extends React.Component {
+class App extends Component {
   render() {
     return (
-      <Map />
+      <Stack />
     );
   }
 }
+
+export default App;

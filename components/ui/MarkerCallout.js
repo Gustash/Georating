@@ -7,7 +7,7 @@ class MarkerCallout extends Component {
         return (
             <MapView.Callout 
                 style={styles.callout}
-                onPress={() => Alert.alert("This will do stuff")}
+                onPress={() => this.props.onCalloutPressed()}
             >
                 <View>
                     <Text>This is totally incomplete lol</Text>

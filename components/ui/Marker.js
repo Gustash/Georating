@@ -3,6 +3,10 @@ import MapView from 'react-native-maps';
 import MarkerCallout from './MarkerCallout';
 
 class Marker extends Component {
+    calloutPressed() {
+        this.props.onNavigation();
+    }
+
     render() {
         return (
             <MapView.Marker draggable
@@ -10,7 +14,9 @@ class Marker extends Component {
                 title="I am a marker"
                 description="I was marked"
             >
-                <MarkerCallout />
+                <MarkerCallout 
+                    onCalloutPressed={() => this.calloutPressed()}
+                />
             </MapView.Marker>
         );
     }
