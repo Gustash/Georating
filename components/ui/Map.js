@@ -62,8 +62,8 @@ class Map extends Component {
         }
     }
 
-    navigateToRate() {
-        this.props.navigation.navigate('Example');
+    navigateToRate(latitude, longitude) {
+        this.props.navigation.navigate('Example', { latitude, longitude });
     }
 
     render() {
@@ -80,7 +80,7 @@ class Map extends Component {
                         key={i}
                         latitude={marker.latitude}
                         longitude={marker.longitude}
-                        onNavigation={() => this.navigateToRate()}
+                        onNavigation={(latitude, longitude) => this.navigateToRate(latitude, longitude)}
                     />
                 )}
             </MapView>

@@ -4,7 +4,7 @@ import MarkerCallout from './MarkerCallout';
 
 class Marker extends Component {
     calloutPressed() {
-        this.props.onNavigation();
+        this.props.onNavigation(this.props.latitude, this.props.longitude);
     }
 
     render() {

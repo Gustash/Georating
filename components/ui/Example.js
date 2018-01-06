@@ -3,9 +3,11 @@ import { View, Text, StyleSheet } from 'react-native';
 
 class Example extends Component {
     render() {
+        const { state } = this.props.navigation;
         return(
             <View style={styles.container}>
-                <Text>I am another screen.</Text>
+                <Text>Latitude: {state.params.latitude}</Text>
+                <Text>Longitude: {state.params.longitude}</Text>
             </View>
         );
     }
