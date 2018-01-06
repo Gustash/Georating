@@ -1,7 +1,7 @@
 import { StackNavigator } from 'react-navigation';
 
 import Map from '../components/ui/Map';
-import Example from '../components/ui/Example';
+import Rating from '../components/ui/Rating';
 
 import { Platform } from 'react-native';
 
@@ -15,11 +15,11 @@ export default Stack = StackNavigator({
             header: null
         }
     },
-    Example: {
-        screen: Example,
+    Rating: {
+        screen: Rating,
         navigationOptions: {
-            title: 'Example Rate',
+            title: 'Rate Location',
             headerStyle: { marginTop: Platform.OS === 'android' ? Constants.statusBarHeight : 0 }
         }
-    }
+    },
 });

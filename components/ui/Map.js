@@ -52,21 +52,54 @@ class Map extends Component {
 
     onMapPress(e) {
         const { coordinate } = e.nativeEvent;
-        if (coordinate) {
-            this.setState({
-                markers: [
-                    ...this.state.markers,
-                    coordinate
-                ]
-            });
-        }
+
+        if (!coordinate)
+            return;
+
+        const marker = {
+            latitude: coordinate.latitude,
+            longitude: coordinate.longitude,
+            rating: 0
+        };
+        this.setState({
+            markers: [
+                ...this.state.markers,
+                marker
+            ]
+        });
     }
 
     navigateToRate(latitude, longitude) {
-        this.props.navigation.navigate('Example', { latitude, longitude });
+        this.props.navigation.navigate('Rating', { 
+            latitude, 
+            longitude, 
+            onRatingChanged: (latitude, longitude, rating) => this.ratingChanged(latitude, longitude, rating) });
+    }
+
+    ratingChanged(latitude, longitude, rating) {
+        let marker = this.state.markers.find(marker => 
+            marker.latitude === latitude && marker.longitude === longitude);
+
+        const oldRating = marker.rating;
+
+        if (!marker)
+            return;
+        
+        marker.rating = rating;
+
+        let markers = this.state.markers.filter(marker => 
+            marker.latitude !== latitude || marker.longitude !== longitude);
+        markers.push(marker);
+
+        console.log(JSON.stringify(markers));
+
+        this.setState({
+            markers
+        });
     }
 
     render() {
+        const { state } = this.props.navigation;
         return (
             <MapView 
                 provider={PROVIDER_GOOGLE}
@@ -80,6 +113,7 @@ class Map extends Component {
                         key={i}
                         latitude={marker.latitude}
                         longitude={marker.longitude}
+                        rating={marker.rating}
                         onNavigation={(latitude, longitude) => this.navigateToRate(latitude, longitude)}
                     />
                 )}

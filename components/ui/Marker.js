@@ -15,6 +15,7 @@ class Marker extends Component {
                 description="I was marked"
             >
                 <MarkerCallout 
+                    rating={this.props.rating}
                     onCalloutPressed={() => this.calloutPressed()}
                 />
             </MapView.Marker>
