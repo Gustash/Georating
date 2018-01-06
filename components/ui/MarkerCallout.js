@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, View, StyleSheet, Alert } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
 import StarRating from 'react-native-star-rating';
 
@@ -10,17 +10,14 @@ class MarkerCallout extends Component {
                 style={styles.callout}
                 onPress={() => this.props.onCalloutPressed()}
             >
-                <View>
+                <View style={styles.content}>
                     <StarRating
                         disabled={true}
                         maxStars={5}
                         rating={this.props.rating}
                         starSize={30}
                     />
-                    <Button
-                        title="Click to rate location!"
-                        onPress={f => f}
-                    />
+                    <Text>Click to rate location!</Text>
                 </View>
             </MapView.Callout>
         );
@@ -30,6 +27,10 @@ class MarkerCallout extends Component {
 const styles = StyleSheet.create({
     callout: {
         width: 200
+    },
+    content: {
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 });
 
