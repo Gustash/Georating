@@ -105,8 +105,8 @@ class Map extends Component {
                 provider={PROVIDER_GOOGLE}
                 style={styles.map}
                 region={this.state.region}
-                onRegionChangeComplete={this.onRegionChange.bind(this)}
-                onPress={this.onMapPress.bind(this)}
+                onRegionChangeComplete={() => this.onRegionChange()}
+                onPress={() => this.onMapPress()}
             >
                 {this.state.markers.map((marker, i) =>
                     <Marker
